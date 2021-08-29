@@ -1,0 +1,17 @@
+{% load static %}
+{% load render_partial %}
+
+<!DOCTYPE html>
+<html lang="en">
+{% render_partial "header_refrence" %}
+
+<body>
+{% render_partial "header" %}
+{% block body %}{% endblock %}
+
+{% render_partial "footer" %}
+
+
+{% render_partial "footer_refrence" %}
+</body>
+</html>
