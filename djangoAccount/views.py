@@ -6,11 +6,16 @@ from django.contrib.auth.models import User
 # Create your views here.
 
 def logout_page(request):
-    logout(request)
-    return redirect("home")
+    if request.user.is_authenticated:
+        logout(request)
+        return redirect("home")
+    else:
+        return redirect("home")
 
 
 def login_page(request,*args,**kwargs):
+    if request.user.is_authenticated:
+        return redirect("home")
     form = login_form(request.POST or None)
     context={
         "form":form
@@ -24,11 +29,13 @@ def login_page(request,*args,**kwargs):
             login(request,user)
             return redirect("home")
         else:
-            print("error")
+            form.add_error("password","کاربری با مشخصات وارد شده وجود ندارد!")
 
     return render(request,"account/login.html",context)
 
 def register_page(request,*args,**kwargs):
+    if request.user.is_authenticated:
+        return redirect("home")
     form = register_form(data=request.POST)
     context={
         "form":form
