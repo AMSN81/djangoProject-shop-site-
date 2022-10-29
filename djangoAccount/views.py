@@ -42,10 +42,12 @@ def register_page(request,*args,**kwargs):
     }
     if form.is_valid():
         print("gg")
+        firstname=form.cleaned_data.get("firstname")
+        lastname=form.cleaned_data.get("lastname")
         username=form.cleaned_data.get("username")
         password=form.cleaned_data.get("password")
         email=form.cleaned_data.get("email")
-        new_user=User.objects.create_user(username=username,password=password,email=email)
+        new_user=User.objects.create_user(username=username,password=password,email=email,first_name=firstname,last_name=lastname)
         login(request,new_user)
         return redirect("home")
     else:

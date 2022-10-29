@@ -12,6 +12,16 @@ class login_form(forms.Form):
         widget=forms.PasswordInput(attrs={"class":"form_control" , "placeholder":"رمز عبور خود را وارد کنید"}))
 
 class register_form(forms.Form):
+    firstname=forms.CharField(
+        required=True,
+        max_length=25,
+        label="نام",
+        widget=forms.TextInput(attrs={"class":"form_control" , "placeholder":"نام خود را وارد کنید" }))
+    lastname=forms.CharField(
+        required=True,
+        max_length=30,
+        label="نام خانوادگی",
+        widget=forms.TextInput(attrs={"class":"form_control" , "placeholder":"نام خانوادگی خود را وارد کنید" }))
     username=forms.CharField(
         required=True,
         max_length=20,

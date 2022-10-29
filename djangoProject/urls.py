@@ -19,16 +19,20 @@ from django.urls import path, include
 from djangoProject import settings
 
 
-from .views import (home_page,header,footer,footer_refrence,header_refrence)
+from .views import (home_page, header, footer, footer_refrence, header_refrence, about_page)
 
 urlpatterns = [
     path('', home_page,name="home"),
+    path('about_us', about_page,name="about_us"),
     path('header', header ,name="header"),
     path('footer', footer ,name="footer"),
     path('footer_ref', footer_refrence ,name="footer_refrence"),
     path('header_ref', header_refrence ,name="header_refrence"),
     path('admin/', admin.site.urls),
     path('', include("djangoAccount.urls",namespace="account")),
+    path('',include("Products.urls",namespace="products")),
+    path('',include("djangoContact.urls",namespace="contact")),
+    path('',include("djangoOrder.urls",namespace="order")),
 ]
 if settings.DEBUG:
     urlpatterns=urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

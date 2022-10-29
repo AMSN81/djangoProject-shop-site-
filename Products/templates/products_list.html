@@ -1,0 +1,65 @@
+{% extends 'Shared/base_html.html' %}
+{% load static %}
+{% load render_partial %}
+
+{% block body %}
+    <section>
+        <div class="container">
+            <div class="row">
+
+                <div class="col-sm-9 padding-right">
+                    <div class="features_items"><!--features_items-->
+                        <h2 class="title text-center">لیست محصولات</h2>
+                        {% for product in page_obj %}
+                            <div class="col-sm-4 pull-right">
+                                <div class="product-image-wrapper">
+                                    <div class="single-products">
+                                        <div class="productinfo text-center">
+                                            <img src="{{ product.image.url }}" alt="">
+                                            <h2>{{ product.price }} تومان</h2>
+                                            <p>{{ product.title }}</p>
+                                            <a href="{% url "products:detail" id=product.id %}" class="btn btn-default add-to-cart"><i
+                                                    class="fa fa-shopping-cart"></i>افزودن به سبـد خریـد</a>
+                                        </div>
+                                        <div class="product-overlay">
+                                            <div class="overlay-content">
+                                                <h2>{{ product.price }} تومان</h2>
+                                                <p>{{ product.title }}</p>
+                                                <a href="{{ product.get_url }}" class="btn btn-default add-to-cart"><i
+                                                        class="fa fa-shopping-cart"></i>مشاهده</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="choose">
+                                        <ul class="nav nav-pills nav-justified">
+                                            <li><a href=""><i class="fa fa-plus-square"></i>لیست علاقه مندی ها</a></li>
+                                            <li><a href=""><i class="fa fa-plus-square"></i>مقایسه</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+
+
+                        <div class="clearfix"></div>
+                        <ul class="pagination">
+                            {% if page_obj.has_previous %}
+                                <li><a href="?page={{ page_obj.previous_page_number }}">قبلی</a></li>
+                            {% endif %}
+                            {% for page in paginator.page_range %}
+                            <li {% if page == page_obj.number  %}class="active"{% endif %}><a href="?page={{ page }}">{{ page }}</a></li>
+                            {% endfor %}
+
+                            {% if page_obj.has_next %}
+                                <li><a href="?page={{ page_obj.next_page_number }}">بعدی</a></li>
+                            {% endif %}
+                        </ul>
+                    </div><!--features_items-->
+                </div>
+
+                {% render_partial "products:Categories_list" %}
+
+            </div>
+        </div>
+    </section>
+{% endblock %}

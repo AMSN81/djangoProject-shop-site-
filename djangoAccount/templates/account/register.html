@@ -11,6 +11,23 @@
                         <form method="post">
                             {% csrf_token %}
 
+                            <label for="{{ form.firstname.id_for_label }}">{{ form.firstname.label }}</label>
+                            {{ form.firstname }}
+                            {% for error in form.firstname.errors %}
+                                {% if error != "This field is required." %}
+                                <p style="color: darkred">{{ error }}</p>
+                                {% endif %}
+                            {% endfor %}
+
+                            <label for="{{ form.lastname.id_for_label }}">{{ form.lastname.label }}</label>
+                            {{ form.lastname }}
+                            {% for error in form.lastname.errors %}
+                                {% if error != "This field is required." %}
+                                <p style="color: darkred">{{ error }}</p>
+                                {% endif %}
+                            {% endfor %}
+
+
 
                             <label for="{{ form.username.id_for_label }}">{{ form.username.label }}</label>
                             {{ form.username }}

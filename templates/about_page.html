@@ -1,0 +1,48 @@
+{% extends 'Shared/base_html.html' %}
+{% load static %}
+
+{% block body %}
+    <div id="contact-page" class="container">
+        <div class="bg">
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="contact-info">
+                        <h2 class="title text-center">لوگـو شرکت</h2>
+                        <img src="{% static "images/home/logo.png" %}" class="img-responsive">
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                    <div class="about">
+                        <h2 class="title text-center">دربـاره ما</h2>
+                        <p class="about-desc">
+                           ما خيلي خفنيم دلت بسوزه
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12 about-address">
+                    <address>
+                        <p>hmmmmm
+                            -  | تلفن تماس : 99999999999999 | فکس : 111111111111 | ایمیـل : a@a.com
+                        </p>
+                    </address>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="container">
+                    <div class="col-sm-12" style="overflow: hidden; margin-bottom: 40px"><h2 class="title text-center">
+                        مـا اینجـا هستیـم ... </h2>
+                        <div id="gmap" class="contact-map">
+                            <img src="{% static 'images/home/Map.jpg' %}" alt="Map">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

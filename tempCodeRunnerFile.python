@@ -1,0 +1,10 @@
+def filter_list(l):
+    for a in l:
+        print(a)
+        print(range(0,4))
+        if not isinstance(a,int):
+            l.remove(a)
+            print(a)
+    return l
+print([1,2,'a','b'][3])    
+print(filter_list([1,2,'a','b']))    
